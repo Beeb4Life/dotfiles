@@ -2,10 +2,10 @@
 
 ## Screenshots
 
-<p align="center">
-  <img src="assets/woah.png" width="45%"/>
-  <img src="assets/woah2.png" width="45%"/>
-</p>
+![](https://github.com/Beeb4Life/dotfiles/blob/main/assets/woah.png)
+
+
+![](https://github.com/Beeb4Life/dotfiles/blob/main/assets/woah2.png)
 
 
 ## What’s Included
