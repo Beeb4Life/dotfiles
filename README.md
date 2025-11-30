@@ -10,11 +10,12 @@
 
 ## What’s Included
 
-- **dwm** (custom patched)
-- **st** (custom build)
+- **dwm** (patched)
+- **st** (patched)
+- **dmenu** (patched)
 - **dwmblocks-async**
 - Simple scripts for media, volume, battery, etc.
-- A few useful configs maybe
+- A few useful configs maybe [picom]
 
 Everything here is part of *my personal workflow*.  
 Feel free to use anything as a **reference**, cloning it directly might not work on your setup.
