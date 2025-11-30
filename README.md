@@ -1,11 +1,8 @@
 <h2 align="center">✨ My DWM Setup</h2>
-<p align="center">Lightweight • Patched • Personal Workflow</p>
 
 ---
 
-## 📸 Screenshots
-![](https://github.com/Beeb4Life/dotfiles/blob/main/assets/woah.png)
-![](https://github.com/Beeb4Life/dotfiles/blob/main/assets/woah2.png)
+## Screenshots
 
 <p align="center">
   <img src="assets/woah.png" width="45%"/>
@@ -14,7 +11,7 @@
 
 ---
 
-## 🧱 What’s Included
+## What’s Included
 
 - **dwm** (custom patched)
 - **st** (custom build)
@@ -27,7 +24,7 @@ Feel free to use anything as a **reference**, cloning it directly might not work
 
 ---
 
-## 🔖 Notes
+## Notes
 
 Statusbar scripts come from the work of **breadonpenguins**, **Luke Smith**, and **arkboi** — all credit to them. Their setups inspired me to use dwm and shape my system to my liking.
 
