@@ -45,7 +45,7 @@ Feel free to use anything as a **reference**, cloning it directly might not work
   - ```mod + shift + q``` to fully exit
 
 ## colors, other stuff:
-If you aren't using ```~/.Xresources``` with or without [pywal16](https://github.com/eylles/pywal16), default color palette is a variant of [Nord](https://www.nordtheme.com/).
+If you aren't using ```~/.Xresources``` with or without [pywal16](https://github.com/eylles/pywal16), default color palette is a normal dwm colors.
 
 
 I have wal generate a template containing [dwm Xresource strings](https://dwm.suckless.org/patches/xrdb/). Then, I merge it with wal's auto-generated Xresources file, using ```xrdb -merge```.
