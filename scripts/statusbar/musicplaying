@@ -1,0 +1,23 @@
+#!/bin/sh
+
+filter() {
+    sed "s/Playing/ ▶/;s/Paused/ ⏸/;s/Stopped/ ⏹/"
+}
+
+case $BLOCK_BUTTON in
+    1) setsid -f "$TERMINAL" -e playerctl open ;;  # left click — open player (does nothing for browsers usually)
+    2) playerctl play-pause >/dev/null ;;         # middle click — toggle play/pause
+    3) notify-send "🎵 Music module" "$(printf '%s\n' \ '- Shows current song.' \ '- ⏸ when paused.' \ '- ▶ when playing.' \ '- Middle click toggles.' \ '- Scroll changes track.' )" ;;
+    4) playerctl previous >/dev/null ;;           # scroll up — prev
+    5) playerctl next >/dev/null ;;               # scroll down — next
+esac
+
+title=$(playerctl metadata --format '{{ artist }} - {{ title }}' 2>/dev/null)
+status=$(playerctl status 2>/dev/null | filter)
+
+[ -n "$title" ] && echo "$status $title" || echo " ⏹ No media"
+
+
+
+
+

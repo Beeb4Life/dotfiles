@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# --- Handle clicks / scroll ---
+case $BLOCK_BUTTON in
+    1) setsid -f "$TERMINAL" -e pulsemixer ;;              # left click — open mixer
+    2) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;       # middle click — toggle mute
+    3) notify-send "🔊 Volume Module" "$(printf '%s\n' \ '- Scroll to change volume' \ '- Middle click to mute' \ '- Left click to open mixer')" ;;
+    4) wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ ;;        # scroll up — volume up
+    5) wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- ;;        # scroll down — volume down
+esac
+
+# --- Display Mode ---
+
+info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null)
+
+# Extract numeric volume
+vol=$(echo "$info" | awk '{print $2}')
+perc=$(awk "BEGIN {printf \"%d\", $vol * 100}")
+
+# Check mute
+if echo "$info" | grep -q MUTED; then
+    echo "  ${perc}%"
+    exit
+fi
+
+# Icons
+if [ "$perc" -ge 90 ]; then
+    icon=" "
+elif [ "$perc" -ge 50 ]; then
+    icon=" "
+elif [ "$perc" -ge 1 ]; then
+    icon=" "
+else
+    icon=" "
+fi
+
+echo "$icon ${perc}%"
+

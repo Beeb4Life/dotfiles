@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+
+TERMINAL="${TERMINAL:-st}"
+
+case "$BLOCK_BUTTON" in
+    1) setsid -f "$TERMINAL" -e calcure ;;   
+esac
+
+printf "󰃭 %(%a %d %b · %I:%M%P )T\\n"

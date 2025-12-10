@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null)
+
+# Extract numeric volume (0.0–1.0)
+vol=$(echo "$info" | awk '{print $2}')
+# Convert to percentage
+perc=$(awk "BEGIN {printf \"%d\", $vol * 100}")
+
+# Check mute state
+if echo "$info" | grep -q MUTED; then
+    echo " ${perc}%"
+else
+    case $perc in
+        9[0-9]|100) icon=" " ;;   # high
+        [5-8][0-9]) icon="" ;;   # medium
+        [1-4][0-9]|[1-9]) icon="" ;; # low
+        0) icon="" ;;            # zero volume
+        *) icon="🔈" ;;
+    esac
+    echo "$icon ${perc}%"
+fi

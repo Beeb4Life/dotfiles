@@ -1,0 +1,23 @@
+#!/bin/sh
+
+wall_dir="${wall_dir:-$HOME/Pictures/walls/}"
+exts="jpg png webp"
+
+list() {
+  du -a "$1" | cut -f2- | grep -Ei "\.($(echo "$exts" | sed 's/ /|/g'))$"
+}
+
+set_wall() {
+  sel="$1"
+  [ -n "$sel" ] || exit 1
+  wal -i "$sel" -o "$HOME/scripts/pywal16"
+}
+
+[ "$1" = "--dmenu" ] && sel="$(list "$wall_dir" | shuf | dmenu)" && [ -n "$sel" ] && set_wall "$sel" && exit
+[ "$1" = "--random" ] && sel="$(list "$wall_dir" | shuf -n 1)" && set_wall "$sel" && exit
+[ -f "$1" ] && set_wall "$1" && exit
+[ -d "$1" ] && sel="$(list "$1" | shuf -n 1)" && set_wall "$sel" && exit
+
+sel="$(list "$wall_dir" | shuf | nsxiv -to - | head -n1)"
+[ -n "$sel" ] && set_wall "$sel"
+
